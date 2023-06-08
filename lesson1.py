@@ -1,1 +1,4 @@
-print("Hello! python!")
+import sys
+
+print(sys.argv)
+print("Hello Nworld")
