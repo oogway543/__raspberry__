@@ -5,9 +5,9 @@ from gpiozero import LED
 
 
 class Window(tk.Tk):
-    def __init__(self,redled):
+    def __init__(self,redLed):
         super().__init__()
-        self.redled = redled
+        self.redLed = redLed
         self.title('hello')
         self.resizable(False, False)
         s = ttk.Style()
@@ -39,11 +39,11 @@ class Window(tk.Tk):
         if self.state:
             self.led_btn.config(text='LED off')
             self.led_btn.config(style='LEDOpen.TButton')
-            led.on()
+            self.redLed.on()
         else:
             self.led_btn.config(text='LED on')
             self.led_btn.config(style='LEDClose.TButton')
-            led.off()   
+            self.redLed.off()   
 
 
 if __name__ == "__main__":
