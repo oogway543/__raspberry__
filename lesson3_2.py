@@ -33,10 +33,12 @@ class LEDButton(ttk.Button):
             self.config(text='LED off')
             self.config(style='LEDOpen.TButton')
             self.led.on()
+            datasource.insert_data(1)
         else:
             self.config(text='LED on')
             self.config(style='LEDClose.TButton')
             self.led.off()
+            datasource.insert_data(0)
 
 class Window(tk.Tk):
     def __init__(self,redLed,**kwargs):
@@ -60,9 +62,6 @@ class Window(tk.Tk):
 
 
 if __name__ == "__main__":
-    conn = datasource.create_connection('iot.db')
-    datasource.create_table(conn)
-    datasource.insert_data(conn,1)
     led = LED(23)
     led.off()
     window = Window(led)   
