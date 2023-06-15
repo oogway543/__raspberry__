@@ -60,7 +60,8 @@ class Window(tk.Tk):
 
 
 if __name__ == "__main__":
-    con = datasource.create_connection('iot.db')
+    conn = datasource.create_connection('iot.db')
+    datasource.create_table(conn)
     led = LED(23)
     led.off()
     window = Window(led)   

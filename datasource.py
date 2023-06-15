@@ -9,3 +9,18 @@ def create_connection(db_file):
         print(e)
 
     return conn
+
+def create_table(conn):
+    sql_projects = """
+    CREATE TABLE IF NOT EXISTS led (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        date text NOT NULL,
+        state INTEGER NOT NULL
+    """
+
+    try:
+        c = conn.cursor()
+        c.execute(sql_projects)
+        print("Table created successfully")
+    except Error as e:
+        print(e)
