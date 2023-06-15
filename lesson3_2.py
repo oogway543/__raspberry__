@@ -2,12 +2,27 @@ import tkinter as tk
 from tkinter import ttk
 from gpiozero import LED
 
+class LEDButton(ttk.Button):
+    def __init__(self,master,led,**kwargs):
+        super().__init__(master,**kwargs)
+        self.led = led
 
+    def user_click(self):
+        self.state = not self.state
+        if self.state:
+            self.config(text='LED off')
+            self.config(style='LEDOpen.TButton')
+            self.led.on()
+        else:
+            self.config(text='LED on')
+            self.config(style='LEDClose.TButton')
+            self.led.off()
 
 class Window(tk.Tk):
-    def __init__(self,redLed):
-        super().__init__()
-        self.redLed = redLed
+    def __init__(self,redLed,**kwargs):
+
+        super().__init__(**kwargs)
+        
         self.title('hello')
         self.resizable(False, False)
         s = ttk.Style()
@@ -30,20 +45,12 @@ class Window(tk.Tk):
         title_label = ttk.Label(self,text="LED控制器",style='Title.TLabel')        
         title_label.pack(pady=25,padx=100)
 
-        self.led_btn = ttk.Button(self,text="LED on",style='Led.TButton',command=self.user_click)   
+        self.led_btn = ttk.Button(self,text="LED on",style='LedClose`.TButton',command=self.user_click) 
+        self.led_btn = LEDButton(self,led=redLed,text="LED on",style='LedClose.TButton')  
              
         self.led_btn.pack(pady=(10,50))
 
-    def user_click(self):
-        self.state = not self.state
-        if self.state:
-            self.led_btn.config(text='LED off')
-            self.led_btn.config(style='LEDOpen.TButton')
-            self.redLed.on()
-        else:
-            self.led_btn.config(text='LED on')
-            self.led_btn.config(style='LEDClose.TButton')
-            self.redLed.off()   
+       
 
 
 if __name__ == "__main__":
