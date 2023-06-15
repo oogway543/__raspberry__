@@ -6,6 +6,25 @@ class LEDButton(ttk.Button):
     def __init__(self,master,led,**kwargs):
         super().__init__(master,**kwargs)
         self.led = led
+        self.state = False
+        self.config(command=self.user_click)
+        s = ttk.Style()
+        s.theme_use('clam')
+        s.configure('LedClose.TButton',
+                    foreground='red',
+                    background='yellow',
+                    font=('Arial',20),
+                    borderwidth=5,
+                    padding=(10,20)
+                    )
+        s.configure('LedOpen.TButton',
+                    background='yellow',
+                    font=('Arial',20),
+                    borderwidth=5,
+                    padding=(10,20),
+                    )
+
+
 
     def user_click(self):
         self.state = not self.state
@@ -22,32 +41,18 @@ class Window(tk.Tk):
     def __init__(self,redLed,**kwargs):
 
         super().__init__(**kwargs)
-        
+
         self.title('hello')
         self.resizable(False, False)
         s = ttk.Style()
         s.theme_use('clam')
-        s.configure('Title.TLabel',foreground='red',background='black',font=('Arial',20))
-        s.configure('Led.TButton',
-                    foreground='red',
-                    background='yellow',
-                    font=('Arial',20),
-                    borderwidth=5,
-                    padding=(10,20)
-                    )
-        s.configure('Led.TButton',
-                    background='yellow',
-                    font=('Arial',20),
-                    borderwidth=5,
-                    padding=(10,20),
-                    )
+        s.configure('Title.TLabel',font=('Arial',20))
+        
         #print(s.layout('TButton'))
         title_label = ttk.Label(self,text="LED控制器",style='Title.TLabel')        
         title_label.pack(pady=25,padx=100)
-
-        self.led_btn = ttk.Button(self,text="LED on",style='LedClose`.TButton',command=self.user_click) 
+ 
         self.led_btn = LEDButton(self,led=redLed,text="LED on",style='LedClose.TButton')  
-             
         self.led_btn.pack(pady=(10,50))
 
        
