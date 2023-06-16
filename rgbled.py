@@ -13,13 +13,11 @@ class RGBLed():
 
     def redLight(self,second):
             self.red.start(75)
-            sleep(second)   
+            sleep(second) 
+            self.red.stop()  
 
 
 
-    def close(self):
-        self.red.stop()
-        self.green.stop()
-        self.blue.stop()
+    def clean(self):
         GPIO.cleanup()
 
