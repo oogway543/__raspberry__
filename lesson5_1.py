@@ -13,25 +13,27 @@ blue = GPIO.PWM(17, 75)
 green = GPIO.PWM(27, 75)
 red = GPIO.PWM(22, 75)
 i = 75
-while (True):
-    red.start(i)
-    sleep(0.5)
-    red.stop()
-    sleep(0.5)
+try:
+    while (True):
+        blue.start(i)
+        sleep(0.5)
+        blue.stop()
+        sleep(0.5)
 
-    blue.start(i)
-    sleep(0.5)
-    blue.stop()
-    sleep(0.5)
+        green.start(i)
+        sleep(0.5)
+        green.stop()
+        sleep(0.5)
 
-    green.start(i)
-    sleep(0.5)
-    green.stop()
-    sleep(0.5)
-except.KeyboardInterrupt:
+        red.start(i)
+        sleep(0.5)
+        red.stop()
+        sleep(0.5)
+
+except KeyboardInterrupt:
     blue.stop()
-    green.stop()
     red.stop()
+    green.stop()   
     GPIO.cleanup()
     print("Program is stopped")
     
