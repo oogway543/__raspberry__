@@ -15,20 +15,40 @@ red = GPIO.PWM(22, 75)
 i = 75
 try:
     while (True):
+
         blue.start(i)
-        sleep(0.5)
+        green.start(i)
+        red.start(i)
         blue.stop()
-        sleep(0.5)
+        green.stop()
+        red.stop()
+
+        blue.start(i)
+        blue.stop()
 
         green.start(i)
-        sleep(0.5)
         green.stop()
-        sleep(0.5)
 
         red.start(i)
-        sleep(0.5)
         red.stop()
-        sleep(0.5)
+
+        red.start(i)
+        blue.start(i)
+        red.stop()
+        blue.stop()
+
+        green.start(i)
+        blue.start(i)
+        green.stop()
+        blue.stop()
+
+        red.start(i)
+        green.start(i)
+        red.stop()
+        green.stop()
+        
+        
+
 
 except KeyboardInterrupt:
     blue.stop()
