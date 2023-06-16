@@ -19,35 +19,48 @@ try:
         blue.start(i)
         green.start(i)
         red.start(i)
+        sleep(0.2)
         blue.stop()
         green.stop()
         red.stop()
+        sleep(0.1)
 
         blue.start(i)
+        sleep(0.2)
         blue.stop()
+        sleep(0.1)
 
         green.start(i)
+        sleep(0.2)
         green.stop()
+        sleep(0.1)
 
         red.start(i)
+        sleep(0.2)
         red.stop()
+        sleep(0.1)
 
         red.start(i)
         blue.start(i)
+        sleep(0.2)
         red.stop()
         blue.stop()
+        sleep(0.1)
 
         green.start(i)
         blue.start(i)
+        sleep(0.2)
         green.stop()
         blue.stop()
+        sleep(0.1)
 
         red.start(i)
         green.start(i)
+        sleep(0.2)
         red.stop()
         green.stop()
         
-        
+
 
 
 except KeyboardInterrupt:
