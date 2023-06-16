@@ -28,4 +28,10 @@ while (True):
     sleep(0.5)
     green.stop()
     sleep(0.5)
-GPIO.cleanup()
+except.KeyboardInterrupt:
+    blue.stop()
+    green.stop()
+    red.stop()
+    GPIO.cleanup()
+    print("Program is stopped")
+    
