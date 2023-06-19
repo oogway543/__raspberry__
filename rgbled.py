@@ -11,10 +11,17 @@ class RGBLed():
         self.green = GPIO.PWM(green_pin,75)
         self.blue = GPIO.PWM(blue_pin,75)
 
-    def redLight(self,second):
-            self.red.start(75)
-            sleep(second) 
-            self.red.stop()  
+    def greenLight(self,second=3,forever=False):
+            if forever:
+                 try:
+                      while(True):
+                           self.green.start(75)
+                 except:
+                      self.green.stop()
+            else:
+                 self.green.start(75)
+                 sleep(second)
+                 self.green.stop()
 
 
 
